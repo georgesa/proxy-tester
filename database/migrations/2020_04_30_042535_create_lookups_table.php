@@ -19,7 +19,7 @@ class CreateLookupsTable extends Migration
             $table->string('proxy_ip')->index();
             $table->unsignedInteger('proxy_port');
             $table->string('response_code')->index()->nullable();
-            $table->unsignedInteger('response_time')->index()->nullable();
+            $table->unsignedFloat('response_time')->index()->nullable();
             $table->timestamps();
         });
     }
