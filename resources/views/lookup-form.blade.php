@@ -74,7 +74,8 @@
                         </div>
                     @endif
                     @if(session('time') && session('code'))
-                        <div class="d-flex align-items-center  justify-content-center text-center" style="height: 100%; width: 100%;">
+                        <div class="d-flex align-items-center  justify-content-center text-center"
+                             style="height: 100%; width: 100%;">
                             <div>
                                 {{ session('code') }}
                                 <h1>{{ round(session('time'), 2) }}s</h1>
@@ -85,6 +86,34 @@
             </div>
         </div>
     </div>
+
+    @if($lookups->count())
+        <br>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Url</th>
+                <th scope="col">Proxy IP</th>
+                <th scope="col">Proxy Port</th>
+                <th scope="col">Response Code</th>
+                <th scope="col">Response Time</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach($lookups as $lookup)
+                <tr>
+                    <th scope="col">{{ $lookup->id }}</th>
+                    <th scope="col">{{ $lookup->url }}</th>
+                    <th scope="col">{{ $lookup->proxy_ip }}</th>
+                    <th scope="col">{{ $lookup->proxy_port }}</th>
+                    <th scope="col">{{ $lookup->response_code }}</th>
+                    <th scope="col">{{ $lookup->response_time }}</th>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+    @endif
 
 </div>
 

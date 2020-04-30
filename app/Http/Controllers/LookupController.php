@@ -10,7 +10,7 @@ class LookupController extends Controller
 {
     public function show()
     {
-        return view('lookup-form', ['lookups' => Lookup::all()]);
+        return view('lookup-form', ['lookups' => Lookup::orderByDesc('id')->get()]);
     }
 
     public function lookup(Request $request, LookupInterface $lookup)

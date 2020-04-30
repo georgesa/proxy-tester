@@ -69,10 +69,10 @@ class LookupService implements LookupInterface
     protected function createProxyUrl(): string
     {
         //ugly but fast to write :))
-        $login = $this->params['username'] && $this->params['password'] ?
+        $login = !empty($this->params['username']) && !empty($this->params['password']) ?
             "{$this->params['username']}:{$this->params['password']}@" : "";
 
-        $proxy = "tcp://{$login}{$this->params['proxy_ip']}:{$this->params['proxy_port']}";
+        $proxy = "http://{$login}{$this->params['proxy_ip']}:{$this->params['proxy_port']}";
 
         return $proxy;
     }
